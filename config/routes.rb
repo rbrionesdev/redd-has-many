@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   # put "/subs/:id", to:"subs#update" # updates sub to db
   # patch "/subs/:id", to:"subs#update" # updates sub to db
   # delete "subs/:id", to:"subs#destroy" # destroy sub from db
-
-  get "tacosyo/:bobross", to:"words#hotdog"
-  get "subs_top", to:"subs#top5"
+########################
   # get '/subs', to:'subs#index' # all subs
   # get '/subs/:id', to:'subs#show'  # one subs
   # get '/subs/new', to:'subs#new'  # form for a new sub
@@ -25,4 +23,8 @@ Rails.application.routes.draw do
   # put '/subs/:id', to:'subs#update' # updates sub to db
   # patch '/subs/:id', to:'subs#update' # updates sub to db
   # delete 'subs/:id', to:'subs#destroy' # destroy sub from db
+
+
+  # get "tacosyo/:bobross", to:"words#hotdog"
+  # get "subs_top", to:"subs#top5"
 end
