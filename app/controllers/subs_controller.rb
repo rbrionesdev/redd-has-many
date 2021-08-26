@@ -1,21 +1,27 @@
 class SubsController < ApplicationController
-  before_action :set_sub, only:[:show, :update, :edit, :destroy]
+  before_action :set_sub, only:[:show,:update,:edit,:destroy]
+  
   def index
     # with rails mvc rails will look for the fill named index.html.erb
     # subs
     # get all subs
-    subs = Sub.all
-    render component:"Subs", props:{subs:subs} #handing subs to react component
+    subs = Sub.all # interacting with model
+    render component:"Subs", props:{subs:subs} #handing subs to react compon
+  end
+
+  def gettop5
+    subs = Sub.all.limit(5)
   end
 
   def show
-    sub = Sub.find(params[:id])
+    # sub = Sub.find(params[:id])
     render component: "Sub", props:{sub:@sub}
-    
   end
 
+
   def new
-    render "SubsNew", props:{sub:@sub} # be the form #private
+    # render "SubsNew", props:{sub:@sub} # be the form
+   render "SubsNew"
   end
 
   def create
@@ -25,18 +31,16 @@ class SubsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
   end
 
-  def edit #edit update delete need set_sub
+  def edit
     # sub = Sub.find(params[:id])
   end
-
   def update
-    # sub = Sub.find(params[:id])
+    # @sub = Sub.find(params[:id])
   end
-
-  def delete
-    # sub = Sub.find(params[:id])
+  def destroy
     @sub.destroy
     redirect_to root_path
   end
@@ -46,7 +50,7 @@ class SubsController < ApplicationController
   def sub_params
     params.require(:sub).permit(:name)
   end
-
+  
   def set_sub
     @sub = Sub.find(params[:id])
   end
